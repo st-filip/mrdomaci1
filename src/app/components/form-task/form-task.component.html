@@ -6,6 +6,7 @@
     id="title"
     class="w-full px-3 py-2 border rounded-md mb-4"
     [(ngModel)]="title"
+    [ngClass]="{ 'bg-slate-200': saved }"
   />
 
   <!-- Opis -->
@@ -14,6 +15,7 @@
     id="description"
     class="w-full px-3 py-2 border rounded-md mb-4"
     [(ngModel)]="description"
+    [ngClass]="{ 'bg-slate-200': saved }"
   ></textarea>
 
   <!-- Prioritet -->
@@ -22,6 +24,7 @@
     id="priority"
     class="w-full px-3 py-2 border rounded-md mb-4"
     [(ngModel)]="priority"
+    [ngClass]="{ 'bg-slate-200': saved }"
   >
     <option *ngFor="let priority of priorities" [value]="priority.value">
       {{ priority.label }}
@@ -37,7 +40,11 @@
   </button>
 
   <!-- Statusna poruka -->
-  <div class="bg-green-500 rounded text-white mb-4 p-5 shadow-md" *ngIf="saved">
+  <div
+    class="bg-green-500 rounded text-white mb-4 p-5 shadow-md"
+    *ngIf="saved"
+    [ngStyle]="{ 'margin-bottom.px': '20' }"
+  >
     Task saved!
   </div>
   <div
