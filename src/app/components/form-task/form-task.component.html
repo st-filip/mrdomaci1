@@ -37,13 +37,18 @@
   </button>
 
   <!-- Statusna poruka -->
-  <div class="text-green-500 mb-4" *ngIf="saved">Task saved!</div>
-  <div class="text-red-500 mb-4" *ngIf="!saved && missingFields.length > 0">
+  <div class="bg-green-500 rounded text-white mb-4 p-5 shadow-md" *ngIf="saved">
+    Task saved!
+  </div>
+  <div
+    class="bg-red-500 rounded text-white mb-4 p-5 shadow-md"
+    *ngIf="!saved && missingFields.length > 0"
+  >
     Please fill in the following fields: {{ missingFields.join(", ") }}
   </div>
 
   <!-- Prikaz unetih podataka -->
-  <div *ngIf="saved">
+  <!-- <div *ngIf="saved">
     <div class="border rounded-md shadow-md p-4 mb-4">
       <h2 class="font-bold mb-2">Task Details</h2>
       <div class="border-b mb-2"></div>
@@ -55,5 +60,5 @@
         <span class="font-bold">Priority:</span> {{ priority }}
       </p>
     </div>
-  </div>
+  </div> -->
 </div>

@@ -1,0 +1,8 @@
+<div class="mx-auto max-w-md flex flex-col">
+  <app-task-item
+    *ngFor="let task of tasks"
+    [title]="task.title"
+    [description]="task.description"
+    [priority]="task.priority"
+  ></app-task-item>
+</div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Task } from 'src/app/models/task.model';
+import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
   selector: 'app-form-task',
@@ -18,6 +20,8 @@ export class FormTaskComponent {
   saved: boolean = false;
   missingFields: string[] = [];
 
+  constructor(private todoService: TodoService) {}
+
   saveTask(): void {
     this.missingFields = [];
 
@@ -35,6 +39,15 @@ export class FormTaskComponent {
 
     if (this.missingFields.length === 0) {
       this.saved = true;
+      setTimeout(() => {
+        this.saved = false;
+        this.title = '';
+        this.description = '';
+        this.priority = '';
+      }, 2000);
+      this.todoService.addTask(
+        new Task(this.title, this.description, this.priority)
+      );
     } else {
       this.saved = false;
     }
