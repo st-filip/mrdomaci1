@@ -1,1 +1,59 @@
-<p>form-task works!</p>
+<div class="max-w-md mx-auto mt-10">
+  <!-- Naslov -->
+  <label for="title" class="block mb-2">Task title:</label>
+  <input
+    type="text"
+    id="title"
+    class="w-full px-3 py-2 border rounded-md mb-4"
+    [(ngModel)]="title"
+  />
+
+  <!-- Opis -->
+  <label for="description" class="block mb-2">Task description:</label>
+  <textarea
+    id="description"
+    class="w-full px-3 py-2 border rounded-md mb-4"
+    [(ngModel)]="description"
+  ></textarea>
+
+  <!-- Prioritet -->
+  <label for="priority" class="block mb-2">Priority:</label>
+  <select
+    id="priority"
+    class="w-full px-3 py-2 border rounded-md mb-4"
+    [(ngModel)]="priority"
+  >
+    <option *ngFor="let priority of priorities" [value]="priority.value">
+      {{ priority.label }}
+    </option>
+  </select>
+
+  <!-- Dugme za čuvanje -->
+  <button
+    class="text-blue-500 px-4 py-2 rounded-md border border-blue-500 mb-4"
+    (click)="saveTask()"
+  >
+    Save task
+  </button>
+
+  <!-- Statusna poruka -->
+  <div class="text-green-500 mb-4" *ngIf="saved">Task saved!</div>
+  <div class="text-red-500 mb-4" *ngIf="!saved && missingFields.length > 0">
+    Please fill in the following fields: {{ missingFields.join(", ") }}
+  </div>
+
+  <!-- Prikaz unetih podataka -->
+  <div *ngIf="saved">
+    <div class="border rounded-md shadow-md p-4 mb-4">
+      <h2 class="font-bold mb-2">Task Details</h2>
+      <div class="border-b mb-2"></div>
+      <p class="mb-2"><span class="font-bold">Title:</span> {{ title }}</p>
+      <p class="mb-2">
+        <span class="font-bold">Description:</span> {{ description }}
+      </p>
+      <p class="mb-2">
+        <span class="font-bold">Priority:</span> {{ priority }}
+      </p>
+    </div>
+  </div>
+</div>
